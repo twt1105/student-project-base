@@ -1,0 +1,40 @@
+server:
+  port: 8090
+
+name:
+  value: "adas \n abc"
+
+friends: "{name: 'zhangsan',age: 20}"
+
+#用- 值表示数组中的一个元素
+test:
+  abc:
+    - aaa
+    - bbb
+    - ccc
+#行内写法
+#pets: [cat,dog,pig]
+
+pets: aaa,bbb,ccc
+
+
+
+users:
+  name: zhangsna
+  age: 20
+  birth: 2020/06/03
+  maps: {k1: v1,k2: 12}
+  lists:
+    - aaa
+    - bbb
+  dog:
+    name: yyy
+    age: 1
+#
+#
+spring:
+  datasource:
+    username: root
+    password: Syx@1234qwer
+    url: jdbc:mysql://10.255.84.12:3306/xsh_test?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
