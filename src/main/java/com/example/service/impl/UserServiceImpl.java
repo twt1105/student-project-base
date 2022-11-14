@@ -64,7 +64,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public void updateUserByName(UserDto userDto) {
-        //根据LambdaQueryWrapper修改用户信息
+        //1：根据LambdaQueryWrapper修改用户信息
         LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(User::getName, userDto.getName());
 
@@ -75,7 +75,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
         update(user, lambdaQueryWrapper);
 
-//        //根据LambdaUpdateWrapper修改用户信息
+//        //2：根据LambdaUpdateWrapper修改用户信息
 //        LambdaUpdateWrapper<User> updateWrapper = new LambdaUpdateWrapper<>();
 //        updateWrapper.eq(User::getName,userDto.getName())
 //                .set(User::getName,userDto.getName())
@@ -87,5 +87,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 //        user.setId(9);
 //        updateById(user);
 
+    }
+
+    @Override
+    public User getUserById(int id) {
+        return getById(id);
     }
 }

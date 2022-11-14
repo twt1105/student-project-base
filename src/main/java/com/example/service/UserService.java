@@ -14,9 +14,28 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface UserService extends IService<User> {
 
+    /**
+     * 新增用户信息
+     * @param userDto
+     */
     void addUser(UserDto userDto);
 
+    /**
+     * 删除用户信息
+     * @param name
+     */
     void deleteUserByName(String name);
 
+    /**
+     * 根据名称修改用户信息
+     * @param userDto
+     */
     void updateUserByName(UserDto userDto);
+
+    /**
+     * 根据id获取用户信息
+     * @param id
+     * @return
+     */
+    User getUserById(int id);
 }
