@@ -93,4 +93,29 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public User getUserById(int id) {
         return getById(id);
     }
+
+    /**
+     * 查询一个姓张的，年龄大于15
+     *
+     * @param name
+     * @param age
+     * @return
+     */
+    @Override
+    public List<User> getUserByNameAndAge(String name, Integer age) {
+        LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper
+//                .eq(User::getName,name)
+//                .like(User::getName, name)
+//                .likeLeft(User::getName, name)
+                .likeRight(User::getName, name)
+                .gt(User::getAge, age);
+        //根据条件查询单条数据
+//        User user = getOne(lambdaQueryWrapper);
+        //根据条件查询多条数据
+        List<User> list = list(lambdaQueryWrapper);
+        //查询所有数据
+//        List<User> list = list();
+        return list;
+    }
 }

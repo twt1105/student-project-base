@@ -7,6 +7,8 @@ import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * <p>
  *  前端控制器
@@ -57,6 +59,15 @@ public class UserController {
     @GetMapping("/getUserById")
     public User getUserById(@RequestParam int id){
        return userService.getUserById(id);
+    }
+
+    /** 根据id获取用户信息
+     * @param id
+     * @return
+     */
+    @GetMapping("/getUserByNameAndAge")
+    public List<User> getUserByNameAndAge(@RequestParam String name, @RequestParam Integer age){
+       return userService.getUserByNameAndAge(name, age);
     }
 
 }

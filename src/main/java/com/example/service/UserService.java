@@ -4,6 +4,8 @@ import com.example.dto.UserDto;
 import com.example.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -38,4 +40,6 @@ public interface UserService extends IService<User> {
      * @return
      */
     User getUserById(int id);
+
+    List<User> getUserByNameAndAge(String name, Integer age);
 }
