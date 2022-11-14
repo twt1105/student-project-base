@@ -31,5 +31,10 @@ public class UserController {
         userService.deleteUserByName(name);
     }
 
+    @PostMapping("/updateUserByName")
+    public void updateUserByName(@RequestBody UserDto userDto){
+        userService.updateUserByName(userDto);
+    }
+
 }
 

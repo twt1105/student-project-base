@@ -36,5 +36,6 @@ public class User implements Serializable {
      */
     private String sex;
 
+    private int id;
 
 }

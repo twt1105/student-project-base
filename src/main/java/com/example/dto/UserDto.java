@@ -18,5 +18,5 @@ public class UserDto {
     /**
      * 性别
      */
-//    private String sex;
+    private String sex;
 }

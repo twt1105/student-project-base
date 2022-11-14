@@ -17,4 +17,6 @@ public interface UserService extends IService<User> {
     void addUser(UserDto userDto);
 
     void deleteUserByName(String name);
+
+    void updateUserByName(UserDto userDto);
 }
