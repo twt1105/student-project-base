@@ -1,6 +1,8 @@
 package com.example.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.dto.UserDto;
+import com.example.dto.UserPageDto;
 import com.example.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -42,4 +44,8 @@ public interface UserService extends IService<User> {
     User getUserById(int id);
 
     List<User> getUserByNameAndAge(String name, Integer age);
+
+    List<UserDto> getUserBySQL(String name);
+
+    Page<User> getUserByPage(UserPageDto userPageDto);
 }

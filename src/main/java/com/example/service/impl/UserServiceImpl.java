@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.dto.UserDto;
+import com.example.dto.UserPageDto;
 import com.example.entity.User;
 import com.example.mapper.UserMapper;
 import com.example.service.UserService;
@@ -117,5 +120,30 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //查询所有数据
 //        List<User> list = list();
         return list;
+    }
+
+    @Override
+    public List<UserDto> getUserBySQL(String name) {
+        List<UserDto> users = userMapper.getUserDto(name);
+        return users;
+    }
+
+    /**
+     * 根据用户名称模糊查询，根据性别查询
+     *
+     * @param userPageDto
+     * @return
+     */
+    @Override
+    public Page<User> getUserByPage(UserPageDto userPageDto) {
+        Page<User> page = new Page<>();
+        page.setCurrent(userPageDto.getCurrentPage());
+        page.setSize(userPageDto.getPageSize());
+
+        LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.like(!StringUtils.isBlank(userPageDto.getName()), User::getName, userPageDto.getName())
+                .eq(!StringUtils.isBlank(userPageDto.getSex()), User::getSex, userPageDto.getSex());
+        Page<User> pageUser = page(page, lambdaQueryWrapper);
+        return pageUser;
     }
 }
